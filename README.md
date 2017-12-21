@@ -1,5 +1,5 @@
 # Scripts
-0;115;0cThese scripts are used on my (sometimes Raspberry Pi-hosted) Duluth server
+These scripts are used on my (sometimes Raspberry Pi-hosted) Duluth server
 for task automation and other sometimes-cool uses.
 
 ### `newspaper_download.sh`
@@ -19,4 +19,10 @@ I use a cronjob to run this hourly:
 ```
 # Update analog meter with Broadband MN Data Usage
 0 * * * * /bin/bash /home/chandler/scripts/get_data_usage.sh -b > /var/www/experiments/analog-meter/get-value
+```
+
+### `update_dns.sh`
+```
+# Dynamic DNS, updated every 5 minutes
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /home/chandler/scripts/dns_update.sh
 ```
