@@ -16,7 +16,7 @@ do
   sleep 10m
 done
 
-echo curl --user "$(cat $(dirname $0)/secrets/mailgun-api-key.txt)" \
+echo curl --user "api:$(cat $(dirname $0)/secrets/mailgun-api-key.txt)" \
     https://api.mailgun.net/v3/cswift.tk/messages \
     -F from='NewsBot <news@cswift.tk>' \
     -F to=chandler@chandlerswift.com \
