@@ -21,6 +21,21 @@ I use a cronjob to run this hourly:
 0 * * * * /bin/bash /home/chandler/scripts/get_data_usage.sh -b > /var/www/experiments/analog-meter/get-value
 ```
 
+### `scheduled_lighting.sh`
+Cron calls this to set the lights at scheduled times of day. Previously these
+scripts lived in my crontab, but that just got too unwieldy.
+
+```
+# Monday through Friday at 6:30 AM, turn on light
+30 6 * * 1-5 /home/chandler/scripts/scheduled_lighting.sh 630am
+
+# Sunday through Thursday at 9:45, turn off main light and turn on red LEDs if main light is on
+45 21 * * 0-4 /home/chandler/scripts/scheduled_lighting.sh 945pm
+
+# Sunday through Thursday at 10:00, dim red LEDs if on at 100%
+0 22 * * 0-4 /home/chandler/scripts/scheduled_lighting.sh 10pm
+```
+
 ### `update_dns.sh`
 ```
 # Dynamic DNS, updated every 5 minutes
