@@ -1,13 +1,17 @@
 #!/bin/bash
 # This script is used by cron to set lights according to a set schedule.
 
-WGET="wget -qO - --user chandler@chandlerswift.com --password \"$(cat $(dirname $0)/secrets/light-pass.txt)\""
+WGET="wget -qO - --user chandler@chandlerswift.com --password $(cat $(dirname $0)/secrets/light-pass.txt)"
 BASE_URL="https://duluth.chandlerswift.com/light/light"
-
+echo $WGET
 case $1 in
     630am)
         # Monday through Friday at 6:30 AM, turn on light
-        $WGET $BASE_URL"/set?0=1&scheduled=630am" > /dev/null
+        for i in `seq 1 255`; do
+            $WGET $BASE_URL"/set?1=$i&2=$i&3=$i" > /dev/null
+        done
+        sleep 300 # 5 minutes
+        $WGET $BASE_URL"/set?0=1&scheduled=630am" #> /dev/null
         ;;
     945pm)
         # Sunday through Thursday at 9:45, turn off main light and turn on red LEDs if main light is on
