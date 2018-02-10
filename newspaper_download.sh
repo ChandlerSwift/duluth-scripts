@@ -6,17 +6,17 @@ year=$(/bin/date +%-Y)
 
 cd /var/www/duluth/newspapers/$year
 
-until wget -N http://www.glencoenews.com/sites/default/files/A-Section%20${month}-$day.pdf
+until /usr/bin/wget -N http://www.glencoenews.com/sites/default/files/A-Section%20${month}-$day.pdf
 do
-  sleep 10m
+  /bin/sleep 10m
 done
 
-until wget -N http://www.glencoenews.com/sites/default/files/B-Section%20${month}-$day.pdf
+until /usr/bin/wget -N http://www.glencoenews.com/sites/default/files/B-Section%20${month}-$day.pdf
 do
-  sleep 10m
+  /bin/sleep 10m
 done
 
-curl --user "api:$(cat $(dirname $0)/secrets/mailgun-api-key.txt)" \
+/usr/bin/curl --user "api:$(/bin/cat $(/usr/bin/dirname $0)/secrets/mailgun-api-key.txt)" \
     https://api.mailgun.net/v3/cswift.tk/messages \
     -F from='NewsBot <news@cswift.tk>' \
     -F to=chandler@chandlerswift.com \
