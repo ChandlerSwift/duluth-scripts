@@ -1,8 +1,13 @@
 #!/bin/bash
 
-month=$(/bin/date +%-m)
-day=$(/bin/date +%-d)
-year=$(/bin/date +%-Y)
+# Optional custom date for debugging: run as ./$0 M D YYYY
+# /home/chandler/scripts/newspaper_download.sh 1 24 2018
+# By default custom dates will not send an email. Add send to override.
+# /home/chandler/scripts/newspaper_download.sh 1 24 2018 send
+
+month=${1:-$(/bin/date +%-m)}
+day=${2:-$(/bin/date +%-d)}
+year=${3:-$(/bin/date +%-Y)}
 
 cd /var/www/duluth/newspapers/$year
 
@@ -15,6 +20,8 @@ until /usr/bin/wget -N http://www.glencoenews.com/sites/default/files/B-Section%
 do
   /bin/sleep 10m
 done
+
+if [ $# -eq 0 ] || [ "$4" == "send" ]; then
 
 /usr/bin/curl --user "api:$(/bin/cat $(/usr/bin/dirname $0)/secrets/mailgun-api-key.txt)" \
     https://api.mailgun.net/v3/cswift.tk/messages \
@@ -49,3 +56,4 @@ Archives:  http://duluth.chandlerswift.com/newspapers/" \
 </body>
 </html>
 "
+fi
