@@ -35,25 +35,25 @@ if [ $# -eq 0 ] || [ "$4" == "send" ]; then
     -F text="New newspapers available!
 A section: http://duluth.chandlerswift.com/newspapers/${year}/A-Section%20${month}-${day}.pdf
 B section: http://duluth.chandlerswift.com/newspapers/${year}/B-Section%20${month}-${day}.pdf
-Archives:  http://duluth.chandlerswift.com/newspapers/" \
-    -F html="
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml'>
- <head>
-  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-  <title>McLeod County Chronicle: ${month}/${day}</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-</head>
-<body style='margin: 0; padding: 0;'>
-  <p style='color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;'>
-    New Newspaper! Here are the links:
-  </p>
-  <a href='http://duluth.chandlerswift.com/newspapers/${year}/A-Section%20${month}-$day.pdf'>A Section</a>, <a href='http://duluth.chandlerswift.com/newspapers/${year}/B-Section%20${month}-$day.pdf'>B Section</a>
-  <br /><br />
-  <p style='color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;'>
-    Archives: <a href='https://duluth.chandlerswift.com/newspapers/'>duluth.chandlerswift.com/newspapers/</a>
-  </p>
-</body>
-</html>
-"
+Archives:  http://duluth.chandlerswift.com/newspapers/"
+#    -F html="
+#<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+#<html xmlns='http://www.w3.org/1999/xhtml'>
+# <head>
+#  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+#  <title>McLeod County Chronicle: ${month}/${day}</title>
+#  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+#</head>
+#<body style='margin: 0; padding: 0;'>
+#  <p style='color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;'>
+#    New Newspaper! Here are the links:
+#  </p>
+#  <a href='http://duluth.chandlerswift.com/newspapers/${year}/A-Section%20${month}-$day.pdf'>A Section</a>, <a href='http://duluth.chandlerswift.com/newspapers/${year}/B-Section%20${month}-$day.pdf'>B Section</a>
+#  <br /><br />
+#  <p style='color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;'>
+#    Archives: <a href='https://duluth.chandlerswift.com/newspapers/'>duluth.chandlerswift.com/newspapers/</a>
+#  </p>
+#</body>
+#</html>
+#"
 fi
