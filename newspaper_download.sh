@@ -9,14 +9,16 @@ month=${1:-$(/bin/date +%-m)}
 day=${2:-$(/bin/date +%-d)}
 year=${3:-$(/bin/date +%-Y)}
 
+url_base=http://liquidlede.surfnewmedia.com/sites/default/files/pdfs
+
 cd /var/www/duluth/newspapers/$year
 
-until /usr/bin/wget -N http://www.glencoenews.com/sites/default/files/A-Section%20${month}-$day.pdf
+until /usr/bin/wget -N $url_base/A-Section%20${month}-$day.pdf
 do
   /bin/sleep 10m
 done
 
-until /usr/bin/wget -N http://www.glencoenews.com/sites/default/files/B-Section%20${month}-$day.pdf
+until /usr/bin/wget -N $url_base/B-Section%20${month}-$day.pdf
 do
   /bin/sleep 10m
 done
