@@ -33,6 +33,7 @@ if [ $# -eq 0 ] || [ "$4" == "send" ]; then
     -F to=celine@swiftgang.net \
     -F to=jacobwawrzyniak@gmail.com \
     -F to=res@swiftgang.net \
+    -F to=kuehma02@luther.edu \
     -F subject='McLeod County Chronicle: '$month/$day \
     -F text="New newspapers available!
 A section: http://duluth.chandlerswift.com/newspapers/${year}/A-Section%20${month}-${day}.pdf
